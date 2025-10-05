@@ -1,0 +1,22 @@
+.meals-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    padding: 30px;
+}
+.order-list{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.order-design{
+   
+   border: none;
+    border-radius: 10px;
+    width:150px;
+    padding: 10px;
+    text-align: center;
+    box-shadow:5px 5px 5px 5px
+    
+}

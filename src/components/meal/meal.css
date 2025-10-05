@@ -1,0 +1,15 @@
+.meal-card{
+    border: 2px solid darkred;
+    padding: 15px;
+    border-radius: 10px;
+}
+.meal-img{
+    display: block;
+    margin: 0 auto;
+}
+.card-bg{
+    background-color: grey;
+    border: 2px solid darkred;
+    padding: 15px;
+    border-radius: 10px;
+}
