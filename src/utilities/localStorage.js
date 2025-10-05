@@ -22,4 +22,11 @@ const addItemStorage = (cat) => {
 
 }
 
-export {addItemStorage,setToStorage,getFromStorage}
+const removeItemStorage = (name) =>{
+    const oldData = getFromStorage();
+    const removeData = oldData.filter(data => data !== name)
+    setToStorage(removeData)
+
+}
+
+export {addItemStorage,setToStorage,getFromStorage,removeItemStorage}

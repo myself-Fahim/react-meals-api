@@ -1,7 +1,7 @@
 import React, { use,  useEffect,  useState } from 'react';
 import Meal from '../meal/meal';
 import './meals.css'
-import { addItemStorage, getFromStorage } from '../../utilities/localStorage';
+import { addItemStorage, getFromStorage, removeItemStorage } from '../../utilities/localStorage';
 
 const Meals = ({mealsFetch}) => {
     const mealsData = use(mealsFetch);
@@ -20,7 +20,7 @@ useEffect(()=>{
     setOrdered(totalFindData);
 
 
-},[])
+},[allMeals])
  
    
     
@@ -30,6 +30,14 @@ useEffect(()=>{
         setOrdered(newOrdered);
         addItemStorage(meal.strCategory)
     }
+
+
+    const removeItem = (name) =>{
+      const newOrdered2 = ordered.filter(order => order.strCategory !== name)
+      setOrdered(newOrdered2);
+    }
+    console.log(ordered)
+
     return (
 
         <>
@@ -40,7 +48,7 @@ useEffect(()=>{
                      key={meal.idCategory} 
                      meal={meal}
                      handleOrdered={handleOrdered}
-                     isOrder = {ordered.some(order => order.strCategory === meal.strCategory)}
+                     isOrder = {ordered.find(order => order.strCategory === meal.strCategory)}
                      ></Meal>)
             }
         </div>
@@ -55,6 +63,10 @@ useEffect(()=>{
                     ordered.map(order => <div key={order.strCategory} className='order-design'>
                         <img style={{width:'100%'}} src={order.strCategoryThumb}/>
                         <h3>{order.strCategory}</h3>
+                        <button onClick={() => {
+                            removeItem(order.strCategory)
+                            removeItemStorage(order.strCategory)
+                        } } >X</button>
                     </div>)
                 }
 
